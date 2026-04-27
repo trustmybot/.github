@@ -1,44 +1,47 @@
 # Trust My Bot
 
-**Multi-agent workflow engine. Replace hallucination with discipline.**
+**Multi-agent engineering workflow. Replace hallucination with discipline.**
 
 Stop single-agent chaos. TMB runs your project like a real engineering team:
-a Planner who scopes, an Architect who designs, an Executor who builds,
-and a Reviewer who catches what you'd miss.
+a planner who scopes, an executor who builds, and an independent reviewer
+who catches what you'd miss.
 
 ---
 
-## 🌐 Free & Open Source
+## 🌐 [trustmybot/plugin](https://github.com/trustmybot/plugin) — Claude Code, MIT, free forever
 
-### [TMB Plugin](https://github.com/trustmybot/plugin) — Claude Code Native
+The shipped product. Drop-in multi-agent workflow for any Claude Code project.
 
-Drop-in multi-agent workflow for any Claude Code project. Role separation,
-structured task contracts, independent PR review gates.
+- **bro** — single Human entry point + planner. Discusses, designs, writes task specs, verifies SWE's work, closes tasks atomically. Never edits source.
+- **swe** — executor. One task per spawn, isolated git worktree, atomic close. Cannot self-approve.
+- **pr-reviewer** — independent 3rd party. Reviews diffs at push time. Read-only on files.
 
-```bash
-curl -sSL https://trustmybot.dev/install-plugin | sh
+Plus: SQLite trajectory memory (resume across sessions, no codebase-rediscovery tax), hard-enforcement hooks (no prompt-discipline ceiling), 6-layer enforcement model from server-side middleware down to prompts. Detailed [agent contract](https://github.com/trustmybot/plugin/blob/main/docs/architecture/RESPONSIBILITIES.md) and [enforcement matrix](https://github.com/trustmybot/plugin/blob/main/docs/architecture/ENFORCEMENT.md).
+
+```
+/plugin marketplace add trustmybot/plugin
+/plugin install tmb@trustmybot
 ```
 
-**Best for:** individual developers already using Claude Code who want
-engineering-grade multi-agent workflows without Python dependencies.
+**MIT-licensed, free forever. This will not change.** Community PRs welcome.
 
 ---
 
-## 💼 TMB Enterprise — Production-Grade Engine
+## 💼 TMB Enterprise — *in development, not yet shipped*
 
-Everything in Plugin, plus structural features only possible with a real engine:
+A commercial tier for teams whose needs an MIT plugin alone can't promise.
 
-- 🧠 **Memory system** — cross-session, cross-agent trajectory
-- 📊 **Audit store** — queryable history of every decision and token
-- 🔒 **Hard permissions** — structural enforcement, not just hooks
+Planned features:
+
+- 🧠 **Hosted trajectory memory** — cross-session, cross-agent, cross-team
+- 📊 **Audit store** — queryable history of every decision, with retention + export
+- 🔒 **Hard permission isolation** — beyond what hooks can enforce
 - 🌍 **Cross-provider** — OpenAI, Gemini, Groq, Mistral, DeepSeek, local models
-- ⚡ **Gatekeeper** — deterministic context summarization (~80% token reduction)
 - 🏢 **Team features** — SSO, audit export, dashboard, priority support
 
-**Best for:** teams building production software who need reliability,
-compliance, and cost control across providers.
+**Boundary commitment:** Enterprise will never gate features that make the plugin work standalone. The plugin is the open core; Enterprise adds infrastructure for teams.
 
-→ [Book a demo](https://trustmybot.dev/demo)  |  [Pricing](https://trustmybot.dev/pricing)
+If your team needs these and you'd like to influence what gets built first, [open an issue](https://github.com/trustmybot/plugin/issues/new) or reach out to [@ZaxShen](https://github.com/ZaxShen).
 
 ---
 
@@ -46,10 +49,10 @@ compliance, and cost control across providers.
 
 | You are... | Use |
 |---|---|
-| A Claude Code user exploring multi-agent workflows | **Plugin** |
-| A solo dev shipping side projects | **Plugin** |
-| A team needing audit, memory, or multi-provider LLM | **Enterprise** |
-| A company with SOC2 / compliance requirements | **Enterprise** |
+| A Claude Code user exploring multi-agent workflows | **Plugin** — available now |
+| A solo dev shipping side projects | **Plugin** — available now |
+| A team needing hosted audit, cross-provider LLM, or SSO | **Enterprise** — express interest while we build |
+| A company with SOC2 / compliance requirements | **Enterprise** — express interest while we build |
 
 ---
 
