@@ -1,59 +1,49 @@
-# Trust My Bot
+# TrustMyBot (TMB)
 
-**Multi-agent engineering workflow. Replace hallucination with discipline.**
+**Trust me bro, it works.** TrustMyBot is a free, MIT-licensed multi-agent harness for Claude Code: one agent plans, one builds, and a separate reviewer signs off before anything is pushed.
 
-Stop single-agent chaos. TMB runs your project like a real engineering team:
-a planner who scopes, an executor who builds, and an independent reviewer
-who catches what you'd miss.
+<p align="center">
+  <img src="https://raw.githubusercontent.com/trustmybot/plugin/dev/docs/assets/tmb-hero.svg" width="640" alt="Animated pixel-art story. Coding agents call broken work done, forget everything, drift off task, need babysitting and touch files they shouldn't. With TrustMyBot, bro plans from a saved memory, swe agents build, and pr-reviewer rejects failures and gates every push to GitHub.">
+</p>
 
----
+## Install
 
-## 🌐 [trustmybot/plugin](https://github.com/trustmybot/plugin) — Claude Code, MIT, free forever
-
-The shipped product. Drop-in multi-agent workflow for any Claude Code project.
-
-- **bro** — single Human entry point + planner. Discusses, designs, writes task specs, verifies SWE's work, closes tasks atomically. Never edits source.
-- **swe** — executor. One task per spawn, isolated git worktree, atomic close. Cannot self-approve.
-- **pr-reviewer** — independent 3rd party. Reviews diffs at push time. Read-only on files.
-
-Plus: SQLite trajectory memory (resume across sessions, no codebase-rediscovery tax), hard-enforcement hooks (no prompt-discipline ceiling), 6-layer enforcement model from server-side middleware down to prompts. Detailed [agent contract](https://github.com/trustmybot/plugin/blob/main/docs/architecture/RESPONSIBILITIES.md) and [enforcement matrix](https://github.com/trustmybot/plugin/blob/main/docs/architecture/ENFORCEMENT.md).
+Requires Claude Code 2.1.295 or later (`claude --version`).
 
 ```
-/plugin marketplace add trustmybot/plugin
+/plugin marketplace add trustmybot/marketplace
 /plugin install tmb@trustmybot
 ```
 
-**MIT-licensed, free forever. This will not change.** Community PRs welcome.
+Then ask: `@bro write a todo cli`
 
----
+## What you get
 
-## 💼 TMB Enterprise — *in development, not yet shipped*
+- **bro** plans and gates. Your one point of contact. Never edits source.
+- **swe** builds one task at a time in its own isolated copy of the repo. Never approves its own work.
+- **pr-reviewer** reviews independently. `git push` stays blocked until it signs off.
+- **Memory that survives restarts.** Plans, decisions and review verdicts are saved in your project, so bro picks up where it left off.
+- **Guardrails in code, not in the prompt.** swe can't write outside its own copy, and force-pushes to protected branches are blocked.
 
-A commercial tier for teams whose needs an MIT plugin alone can't promise.
+Source, docs and changelog: **[trustmybot/plugin](https://github.com/trustmybot/plugin)**. MIT, free forever. This will not change.
 
-Planned features:
+## TMB Enterprise (in development, not shipped)
 
-- 🧠 **Hosted trajectory memory** — cross-session, cross-agent, cross-team
-- 📊 **Audit store** — queryable history of every decision, with retention + export
-- 🔒 **Hard permission isolation** — beyond what hooks can enforce
-- 🌍 **Cross-provider** — OpenAI, Gemini, Groq, Mistral, DeepSeek, local models
-- 🏢 **Team features** — SSO, audit export, dashboard, priority support
+For teams that need more than a local plugin can promise. Planned: hosted shared memory, a queryable audit store with retention and export, SSO and a team dashboard, and support for more model providers.
 
 **Boundary commitment:** Enterprise will never gate features that make the plugin work standalone. The plugin is the open core; Enterprise adds infrastructure for teams.
 
-If your team needs these and you'd like to influence what gets built first, [open an issue](https://github.com/trustmybot/plugin/issues/new) or reach out to [@ZaxShen](https://github.com/ZaxShen).
-
----
+Want a say in what gets built first? [Open an issue](https://github.com/trustmybot/plugin/issues/new) or reach [@ZaxShen](https://github.com/ZaxShen).
 
 ## Which should I use?
 
 | You are... | Use |
 |---|---|
-| A Claude Code user exploring multi-agent workflows | **Plugin** — available now |
-| A solo dev shipping side projects | **Plugin** — available now |
-| A team needing hosted audit, cross-provider LLM, or SSO | **Enterprise** — express interest while we build |
-| A company with SOC2 / compliance requirements | **Enterprise** — express interest while we build |
+| A Claude Code user, solo or on a team, shipping real code | **Plugin**, available now |
+| A team needing hosted audit, SSO or other model providers | **Enterprise**, register interest while we build |
+| A company with SOC 2 or compliance requirements | **Enterprise**, register interest while we build |
 
----
+<!-- PENDING GO-LIVE: uncomment once https://trustmybot.org resolves -->
+<!-- **Website:** [trustmybot.org](https://trustmybot.org) -->
 
 Built by [@ZaxShen](https://github.com/ZaxShen).
