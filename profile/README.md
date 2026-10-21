@@ -3,16 +3,18 @@
 **Trust me bro, it works.** TrustMyBot is a free, MIT-licensed multi-agent harness for Claude Code: one agent plans, one builds, and a separate reviewer signs off before anything is pushed.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/trustmybot/plugin/dev/docs/assets/tmb-hero.svg" width="640" alt="Animated pixel-art story. Coding agents call broken work done, forget everything, drift off task, need babysitting and touch files they shouldn't. With TrustMyBot, bro plans from a saved memory, swe agents build, and pr-reviewer rejects failures and gates every push to GitHub.">
+  <img src="https://trustmybot.org/hero-auto.svg" width="640" alt="Animated pixel-art story. Coding agents call broken work done, forget everything, drift off task, need babysitting and touch files they shouldn't. With TrustMyBot, bro plans from a saved memory, swe agents build, and pr-reviewer rejects failures and gates every push to GitHub.">
 </p>
 
 ## Install
 
 Requires Claude Code 2.1.295 or later (`claude --version`).
 
+In your project:
+
 ```
-/plugin marketplace add trustmybot/marketplace
-/plugin install tmb@trustmybot
+claude plugin marketplace add trustmybot/marketplace --scope project
+claude plugin install tmb@trustmybot --scope project
 ```
 
 Then ask: `@bro write a todo cli`
@@ -43,7 +45,6 @@ Want a say in what gets built first? [Open an issue](https://github.com/trustmyb
 | A team needing hosted audit, SSO or other model providers | **Enterprise**, register interest while we build |
 | A company with SOC 2 or compliance requirements | **Enterprise**, register interest while we build |
 
-<!-- PENDING GO-LIVE: uncomment once https://trustmybot.org resolves -->
-<!-- **Website:** [trustmybot.org](https://trustmybot.org) -->
+**Website:** [trustmybot.org](https://trustmybot.org)
 
 Built by [@ZaxShen](https://github.com/ZaxShen).
